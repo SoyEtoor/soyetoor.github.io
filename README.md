@@ -1,171 +1,368 @@
 # soyetoor.github.io
 
-## Task and Feature Breakdown
+## Campo de texto
 
-Este documento captura los EPICs, features y tareas extraídas del EPIC Control. Cada tarea incluye descripción, criterios de aceptación, dependencias, prioridad y etiquetas, como referencia para crear issues en GitHub.
+<textarea rows="40" cols="140">
+ChatsFuentesBacklog Completo — SaaS Multiempresa de Tarificación Logística
+Epics: 13 — Features: 51 — Tasks: 112 — Total: 163
 
-### EPIC: Control Plane / Superadmin
+E01 — Descubrimiento, alcance y arquitectura base
+F001 Definir alcance funcional MVP vs Premium
 
-#### Feature: Onboarding e impersonación (MVP)
+T001 Documentar módulos MVP (tarificación, rutas, viajes, clientes, operadores)
+T002 Documentar módulos Premium (tracking, GPS, flota, puntos interés)
+T003 Definir matriz de exclusiones y supuestos del MVP
+T004 Revisión de diferencias funcionales entre roles y planes
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Crear entidad Empresa | Modelo para guardar nombre, correo_admin, plan_id, estado y empresa_id de cada compañía. | Nombre único por empresa, empresa_id generado automáticamente, estado activo o inactivo, timestamps para auditoría. | – | Alta | backend, saas |
-| API crear empresa e invitación | Endpoint de superadmin para crear una empresa y enviar invitación al administrador. | Solo disponible para superadmin, genera token único, envía correo electrónico, registra log. | Autenticación, EmailService | Alta | backend, security, audit |
-| Onboarding admin empresa | Flujo de registro iniciado a partir de la invitación. | Token válido, contraseña segura, datos guardados y log de creación. | API invitación | Alta | frontend, auth |
-| Impersonation mode | Permitir al superadmin ingresar como un administrador de empresa. | Indicador visible de modo de suplantación, auditoría activa, restricciones de superadmin aplicadas. | Auth, Logs | Alta | backend, security |
-| Listar empresas | Pantalla/tablero que muestra empresas con filtros. | Paginación, filtro por estado, acceso a detalle para editar. | Entidad Empresa | Media | frontend, backend |
-| Cambiar admin de empresa | Reasignar el usuario administrador de una empresa. | Notificación al nuevo admin, registro en log de auditoría, solo superadmin puede ejecutarlo. | Usuario | Media | backend, audit |
+F002 Diseñar arquitectura Clean Architecture para monolito modular
 
-#### Feature: Auditoría global (MVP)
+T005 Definir capas (domain, application, infrastructure, interfaces)
+T006 Establecer convenciones de boundaries y dependencias
+T007 Diagramar flujogramas de entrada/salida por módulo
+T008 Definir guía de desacoplamiento por dominio
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Implementar logs | Crear tabla Auditoria con campos usuario, empresa, acción, entidad y fecha. | Registro de las acciones de create/update/delete; la información no debe ser editable. | Todas las entidades | Alta | backend, audit |
-| API consulta logs | Endpoint para consultar logs filtrados por empresa, usuario y fecha. | Permite filtrar por usuario, empresa y rango de fechas; incluye paginación. | Logs | Media | backend |
-| UI logs | Interfaz para visualizar y filtrar logs. | Búsqueda por fecha, usuario y acción; listado paginado. | API logs | Media | frontend |
+F003 Definir modelo de datos inicial en PostgreSQL
 
-### EPIC: Empresa (Tenant)
+T009 Diseñar entidades core con empresa_id multi-tenant
+T010 Diseñar relaciones y claves externas
+T011 Definir estrategia de migraciones versionadas
+T012 Validar normalización y performance
 
-#### Feature: Configuración empresa (MVP)
+F004 Definir estrategia de ambientes (dev/staging/prod)
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Entidad ConfiguracionEmpresa | Modelo con campos moneda, margen, maxStops y varios flags de configuración. | Existe solo una configuración por empresa; valores por defecto definidos. | Empresa | Alta | backend |
-| API actualizar configuración | Endpoint que permite editar la configuración por el administrador. | Validaciones de campos y reglas (RLS) que aseguren que solo la empresa propietaria puede modificarla. | ConfiguracionEmpresa | Alta | backend, security |
-| UI configuración | Formulario para editar la configuración de la empresa. | Dropdown para selección de moneda, switches para activar/desactivar flags. | API configuración | Media | frontend |
+T013 Documentar variables de entorno por ambiente
+T014 Separar archivos de configuración
+T015 Definir procedimientos de migración por ambiente
+T016 Establecer controles de acceso por ambiente
 
-#### Feature: Stripe y suscripciones (MVP)
+E02 — Multi-tenant, identidad y seguridad
+F005 Implementar esquema multiempresa por empresa_id
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Entidad PlanSuscripcion | Modelo con nombre, precio y lista de features. | Asociada a la empresa correspondiente. | Empresa | Alta | backend |
-| Crear cliente Stripe | Registrar a la empresa en Stripe al darse de alta. | Guardar customer_id; manejar errores y registrar log. | Stripe | Alta | backend, integration |
-| Crear suscripción | Asignar el plan de suscripción en Stripe. | Mantener sincronizado el estado entre el sistema y Stripe; registrar logs. | Stripe | Alta | backend |
-| Webhooks Stripe | Procesar los eventos que envía Stripe (p. ej. invoice.paid, subscription.updated). | Validar firma, actualizar estado de la suscripción y registrar log. | Stripe | Alta | backend, security |
-| UI suscripciones | Pantalla que muestra el plan actual y permite cambiar o cancelar la suscripción. | Ver el plan activo, opción para cambiar/cancelar y reflejar estado de Stripe. | Stripe API | Media | frontend |
+T017 Incorporar empresa_id en tablas transaccionales
+T018 Agregar empresa_id a índices y constraints
+T019 Definir migración y data legacy
+T020 Documentar ejemplos de query multi-tenant
 
-### EPIC: Autenticación y Usuarios
+F006 Habilitar Row-Level Security (RLS) en PostgreSQL
 
-#### Feature: Auth y roles (MVP)
+T021 Crear políticas RLS por tabla multi-tenant
+T022 Implementar contexto de tenant en conexión DB
+T023 Establecer tests de aislamiento de datos
+T024 Revisar bypass y riesgos de backdoors
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Entidad Usuario | Tabla con email, password (hash), rol y empresa_id. | Email único por empresa; contraseña almacenada de forma segura (hash). | Empresa | Alta | backend, auth |
-| Login | Mecanismo de autenticación basado en JWT. | Generación de token válido con expiración, validación en cada petición. | Usuario | Alta | backend, frontend |
-| Invitar usuario | Envío de invitación por correo electrónico para crear usuario dentro de una empresa. | Generar token único con expiración, enviar correo con la invitación. | Email service | Alta | backend |
-| CRUD usuarios | Endpoints para crear, listar, actualizar y desactivar usuarios. | Soporte a soft delete, registro de auditoría; el email no debe ser editable. | Usuario | Alta | backend |
-| UI usuarios | Interfaz de gestión de usuarios. | Tabla con paginación, orden alfabético, acciones de editar/desactivar. | API usuarios | Media | frontend |
+F007 Autenticación y autorización basada en roles
 
-### EPIC: Operadores
+T025 Implementar login JWT y refresh tokens
+T026 Definir estructura RBAC (superadmin, admin empresa, operador, analista)
+T027 Socializar roles y permisos en documentación
+T028 Seguridad en endpoints administrativos
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Entidad Operador | Registro de operadores con datos personales y número/licencia de conductor. | RFC válido; fecha de vencimiento de la licencia obligatoria. | Empresa | Alta | backend |
-| CRUD operadores | Endpoints para alta, baja y modificación de operadores. | Validaciones de campos; auditoría de cambios. | Operador | Alta | backend |
-| UI operadores | Tabla que muestra operadores con un identificador corto. | Funcionalidad de búsqueda y paginación. | API operadores | Media | frontend |
+F008 Hardening de seguridad y cumplimiento mínimo
 
-### EPIC: Clientes y Bases
+T029 Configurar rate limiting (IP/empresa/rol)
+T030 Configurar CORS y headers seguros (Helmet)
+T031 Definir política de contraseñas y rotación
+T032 Añadir validación y sanitización de payloads
+T033 Implementar hashing/cifrado fuerte de passwords y datos sensibles
+T034 Revisión contra OWASP Top 10
 
-#### Feature: Clientes (MVP)
+E03 — Catálogos de negocio y operación logística
+F009 Gestión de clientes por empresa
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Entidad Cliente | Modelo con campos RFC, razón social y contacto. | RFC único por empresa. | Empresa | Alta | backend |
-| CRUD clientes | Endpoints para alta, baja y edición de clientes. | Evitar duplicados; registrar logs de auditoría. | Cliente | Alta | backend |
-| UI clientes | Interfaz para visualizar y administrar clientes. | Tabla con búsqueda y paginación. | API clientes | Media | frontend |
+T035 Crear CRUD de clientes con validaciones fiscales
+T036 Agregar importación masiva CSV de clientes
+T037 Implementar búsqueda y filtros por estatus
 
-#### Feature: Bases logísticas (MVP)
+F010 Gestión de operadores (choferes)
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Entidad Base | Registro con coordenadas y dirección detallada. | Latitud y longitud son obligatorios. | Cliente | Alta | backend |
-| CRUD bases | Endpoints para gestionar bases logísticas. | Evitar duplicados de coordenadas; auditoría de cambios. | Base | Alta | backend |
-| UI bases | Formulario con mapa para seleccionar ubicación. | Selección visual de la posición en el mapa (Leaflet). | Leaflet | Media | frontend |
+T038 Crear CRUD de operadores
+T039 Validar vencimiento de licencias/certificados médicos
+T040 Alertar expiraciones próximas
 
-### EPIC: Cotizador de rutas
+F011 Gestión de bases logísticas y patios
 
-#### Feature: Geocoding (MVP)
+T041 Crear CRUD de bases con georreferencia
+T042 Evitar duplicados geográficos por empresa
+T043 Asociar bases a rutas y zonas operativas
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Servicio geocoding | Servicio interno que convierte texto de dirección a coordenadas. | Precisión básica aceptable; manejo de errores de la API externa. | API externa | Alta | backend |
-| UI búsqueda | Componente UI con autocomplete para direcciones. | Sugerencias dinámicas mientras se escribe. | API geocoding | Alta | frontend |
+F012 Gestión de unidades y parámetros de rendimiento
 
-#### Feature: Rutas INEGI (MVP)
+T044 Crear catálogo de unidades y tipos de carga
+T045 Configurar rendimiento de combustible por unidad
+T046 Registrar fichas técnicas y documentos de unidad
+T047 Implementar soft delete transversal
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Integrar API INEGI | Consumir la API de rutas de INEGI para obtener trayectos. | Al menos 3 rutas válidas por consulta. | INEGI | Alta | backend |
-| Procesar rutas | Normalizar y enriquecer la información de las rutas. | Calcular distancia, tiempo y costos de peaje. | INEGI | Alta | backend |
-| Calcular combustible | Calcular consumo de combustible en función de kilómetros y rendimiento. | Fórmula correcta km/lt según configuración de empresa. | Rutas | Alta | backend |
-| UI mapa rutas | Visualizar las tres rutas sugeridas. | Mostrar rutas con colores distintos y permitir interacción sobre el mapa. | Leaflet | Media | frontend |
+E04 — Motor de rutas y tarificación (INEGI + costos)
+F013 Ingesta y normalización de datos oficiales INEGI
 
-#### Feature: Resultados (MVP)
+T048 Definir pipeline de carga de datasets INEGI
+T049 Crear proceso de actualización periódica de datos
+T050 Normalizar datos para queries de ruteo
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Calcular costo total | Sumar todos los costos asociados a la ruta (combustible, peajes, margen). | Cálculo incluye margen configurado de la empresa. | Rutas | Alta | backend |
-| UI resultados | Presentar los resultados de cada ruta de forma comparativa. | Tarjetas comparativas con selección clara de la ruta. | API rutas | Alta | frontend |
-| Registrar viaje | Persistir la ruta seleccionada como un viaje. | Guardar todos los datos relevantes y registrar auditoría. | Viaje | Alta | backend |
-| Exportar | Exportar información del viaje en PDF, XML o XLSX. | Genera archivos válidos para descarga. | Librerías de exportación | Media | backend |
+F014 Cálculo de rutas óptimas (cuota y libres)
 
-### EPIC: Viajes
+T051 Implementar algoritmo de enrutamiento base
+T052 Incluir opción comparativa cuota vs libre
+T053 Agregar fallback cuando falte tramo oficial
+T054 Testear precisión vs rutas reales
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Entidad Viaje | Definición del modelo de viaje que relaciona cliente, operador y ruta. | Claves foráneas válidas para cliente y operador. | Cliente, Operador | Alta | backend |
-| Listar viajes | Endpoint e interfaz para ver historial de viajes. | Permitir filtros por fecha, cliente u operador. | Viaje | Alta | backend |
-| UI viajes | Tabla de viajes en la interfaz. | Orden predeterminado por fecha; paginación. | API viajes | Media | frontend |
+F015 Cálculo de peajes y costos carreteros
 
-### EPIC: Seguridad y Multi-tenant
+T055 Modelar peajes por tramo y tipo de vehículo
+T056 Implementar cálculo agregado por viaje
+T057 Guardar históricos de peaje (Post-MVP)
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Implementar RLS PostgreSQL | Configurar Row-Level Security para aislar datos por empresa. | Pruebas que demuestren el aislamiento correcto. | Base de datos | Alta | backend, security |
-| Soft delete global | Añadir campo deleted_at para eliminación lógica. | No se elimina físicamente ningún registro. | Base de datos | Alta | backend |
-| Validación empresa en endpoints | Middleware que restringe el acceso a recursos de otras empresas. | Asegura que el empresa_id del token corresponde a los datos solicitados. | Auth | Alta | backend |
+F016 Estimación de combustible y costo operativo real
 
-### EPIC: Mapas
+T058 Integrar rendimiento por unidad en cálculo
+T059 Incorporar precio de combustible configurable
+T060 Integrar consulta a API (INEGI/externa) de precios combustible (Premium)
+T061 Guardar histórico de precios consultados (Premium)
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Configurar Leaflet | Configurar librería Leaflet en el frontend. | El mapa se muestra correctamente y carga sin errores. | Frontend | Alta | frontend |
-| Dibujar rutas | Dibujar polylines de rutas en el mapa. | Las rutas son visibles y se ajustan al mapa. | Rutas | Media | frontend |
+F017 Motor de cotización versionado y auditable
 
-### EPIC: Premium (Post-MVP)
+T062 Generar desglose detallado por componente de costo
+T063 Guardar parámetros versión por cotización
+T064 Auditar cambios en cotización vs precios históricos
 
-#### Feature: Tracking (Post-MVP)
+E05 — Viajes, trazabilidad y operación diaria
+F018 Registro de viajes end-to-end
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Estados de viaje | Definir el flujo de estados del viaje (p. ej. pendiente, en curso, finalizado). | Transiciones válidas entre estados. | Viaje | Media | backend |
-| Tracking en mapa | Mostrar la posición en tiempo real del vehículo. | Actualización dinámica de la posición. | GPS | Baja | frontend |
+T065 Crear flujo alta/edición/cierre de viaje
+T066 Relacionar viaje con cliente, operador y unidad
+T067 Guardar costos y cotización seleccionada
+T068 Registrar hitos operativos (salida/llegada/paradas)
 
-#### Feature: Puntos GPS (Post-MVP)
+F019 Trazabilidad de eventos del viaje
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Entidad PuntoInteres | Modelo para puntos de interés (POIs). | Contiene tipos definidos de POI. | Empresa | Media | backend |
-| CRUD POIs | Endpoints para gestionar puntos de interés. | Validaciones de entrada y logs. | PuntoInteres | Media | backend |
-| Mostrar POIs | Visualizar POIs en el mapa Leaflet. | Filtrado por tipo y empresa. | Leaflet | Media | frontend |
+T069 Implementar timeline de eventos con timestamps
+T070 Auditar cambios de estado del viaje
+T071 Permitir comentarios o anotaciones en eventos
 
-#### Feature: Flota (Post-MVP)
+F020 Evidencias y documentos del viaje
 
-| Task | Description | Acceptance criteria | Dependencies | Priority | Labels |
-| --- | --- | --- | --- | --- | --- |
-| Entidad Vehiculo | Modelo para datos de vehículos (placa, modelo, capacidad, etc.). | La placa es única por empresa. | Empresa | Media | backend |
-| CRUD vehículos | Endpoints para gestionar vehículos. | Registro de auditoría y validación de datos. | Vehículo | Media | backend |
-| Alertas mantenimiento | Lógica para detectar y notificar necesidad de mantenimiento. | Enviar notificaciones de mantenimiento a responsables. | Vehículo | Baja | backend |
+T072 Permitir adjuntar documentos y comprobantes
+T073 Validar y versionar archivos subidos
+T074 Definir política de retención documental
 
-## Cómo usar esta lista
+F021 Incidencias y excepciones operativas
 
-Cada fila de las tablas representa un issue que puede crearse en GitHub. El título del issue debería ser el nombre de la tarea; la descripción del issue puede incluir la descripción, criterios de aceptación, dependencias, prioridad y etiquetas.
+T075 Crear catálogo de incidencias tipificadas
+T076 Permitir apertura y cierre de incidencias ligadas a viaje
+T077 Notificar a supervisores según gravedad
 
-También se recomienda agrupar los issues mediante labels de GitHub, por ejemplo:
+E06 — Funcionalidades premium: tracking, GPS y flota
+F022 Tracking de viajes en tiempo real
 
-- `epic/control-plane`
-- `feature/onboarding`
-- `priority/alta`
+T078 Implementar canal de actualización en tiempo real (WebSocket/REST)
+T079 Mostrar estado y ubicación actual del viaje
+T080 Configurar permisos por plan funcional
 
-Esto facilita el seguimiento del roadmap y el avance por fases.
+F023 Gestión de puntos GPS
+
+T081 Modelar almacenamiento eficiente por viaje
+T082 Definir reglas de muestreo y compresión
+T083 Highlight puntos críticos (paradas, excesos velocidad)
+
+F024 Mapa de trazas y replay de recorrido
+
+T084 Visualización histórica de ruta recorrida
+T085 Agregar replay por rango de tiempo
+T086 Exportar trazas en formatos estándar
+
+F025 Gestión de flota premium
+
+T087 Dashboard de utilización de unidades
+T088 Alertas de mantenimiento preventivo
+T089 Registrar historial de servicios
+T090 Selección avanzada de unidad para cotizar viaje
+
+E07 — Superadministrador, onboarding e impersonation
+F026 Onboarding de nuevas empresas
+
+T091 Flujo de alta de empresa y datos iniciales
+T092 Provisionar configuración inicial por tenant
+T093 Enviar invitación y seguimiento de registro
+T094 Validación de dominio correo vs nombre empresa
+
+F027 Panel de superadministrador global
+
+T095 Vista consolidada de empresas activas/inactivas
+T096 Filtros por plan, estado y actividad reciente
+T097 Métricas rápidas de uso por tenant
+T098 Cambios de plan y reactivación/suspensión
+
+F028 Impersonation mode seguro
+
+T099 Implementar acceso temporal como usuario empresa
+T100 Aviso visual de sesión impersonada
+T101 Registrar historial y trazabilidad completa
+T102 Limitar operaciones sensibles bajo impersonation
+
+F029 Auditoría global multiempresa
+
+T103 Centralización eventos críticos seguridad y negocio
+T104 Habilitar logs de cambios y acceso por empresa/actor
+T105 Consulta avanzada filtrada por rango fechas/entidad
+T106 Exportar registros en CSV/XML
+
+E08 — Planes, suscripciones y Stripe
+F030 Modelo de planes y límites por funcionalidad
+
+T107 Definir planes (Starter, Growth, Premium, Custom)
+T108 Definir límites por módulo funcional y consumo
+T109 Implementar middleware de chequeo de límites
+T110 UI para upgrade/downgrade
+
+F031 Integración de checkout y suscripciones con Stripe
+
+T111 Implementar alta de suscripción desde portal
+T112 Soporte a prueba gratis / upgrade inmediato
+T113 Gestionar cambios de plan prorrateados
+T114 UI para gestión y actualización de método pago
+
+F032 Webhooks Stripe y sincronización de estado
+
+T115 Crear endpoint seguro de webhooks Stripe
+T116 Sincronizar automáticamente estado de suscripción
+T117 Notificar pagos fallidos o renovaciones
+
+F033 Facturación, cancelaciones y reintentos
+
+T118 Implementar flujo de cancelación controlado
+T119 Gestionar reintentos de cobranza básica
+T120 Visualización historial y facturas en UI
+
+E09 — Frontend React 18 + Leaflet
+F034 Shell de aplicación y navegación principal
+
+T121 Configurar estructura modular y rutas protegidas
+T122 Implementar layout base con menú lateral y superior
+T123 Adaptación responsive (mobile/desktop)
+T124 Personalización de tema por empresa
+
+F035 Módulo de mapas con Leaflet
+
+T125 Integrar Leaflet con proveedor de tiles personalizable
+T126 Visualizar rutas (cuota/libre) y marcadores de origen/destino
+T127 Soporte a iconos personalizados y layers
+T128 Exportar vista del mapa como imagen
+
+F036 Pantallas de cotización y detalle de costos
+
+T129 Formulario para datos de cotización
+T130 Renderizado de desglose de costos por ruta
+T131 Comparador 3 rutas vs criterios (tiempo, costo, distancia)
+T132 Acciones “Seleccionar”, “Exportar” y feedback inmediato
+
+F037 Pantallas de viajes, tracking y operación
+
+T133 Tablero de viajes activos/finalizados
+T134 Vista de tracking en mapa e info complementaria
+T135 Filtro por fechas, operador, cliente
+T136 Acciones rápidas: cerrar viaje, exportar reporte
+
+E10 — Backend Node.js/Express por módulos
+F038 Estructura de monolito modular en Express
+
+T137 Crear módulos desacoplados por dominio
+T138 Separar controladores, rutas, servicios y repositorios
+T139 Pruebas de integración básica por módulo
+T140 Contratos de entrada/salida, validador central
+
+F039 API de tarificación y rutas
+
+T141 Endpoint de cálculo de ruta/costo
+T142 Integrar con motor INEGI y FuelService
+T143 Implementar validaciones y manejo de errores
+T144 Versionado del endpoint y documentación
+
+F040 API de catálogos y operación de viajes
+
+T145 CRUD multi-tenant para clientes, operadores, unidades, bases
+T146 Añadir paginación, filtros y ordenamiento
+T147 Soporte para soft delete y restauración
+
+F041 API de administración global y auditoría
+
+T148 Endpoints exclusivos para superadmin/impersonation
+T149 Endpoints de consulta/exportación de logs
+T150 Gestión de triggers por evento crítico
+
+E11 — DevOps, CI/CD y contenerización
+F042 Dockerización de servicios
+
+T151 Crear Dockerfile para backend
+T152 Crear Dockerfile para frontend
+T153 Generar imágenes para entornos oficiales
+
+F043 Orquestación local con Docker Compose
+
+T154 Definir servicios: app(s), PostgreSQL, herramientas utilitarias
+T155 Configurar volúmenes, redes y persistencia
+T156 Script de inicialización para startup local
+
+F044 Pipeline CI (lint, test, build)
+
+T157 Configurar workflow de CI en GitHub Actions
+T158 Ejecutar linters y tests unitarios automáticamente
+T159 Publicar artefactos/builds según rama y entorno
+
+F045 Pipeline CD a staging y producción
+
+T160 Automatizar despliegue a entorno staging
+T161 Automatizar despliegue a producción (aprobación manual)
+T162 Pipeline rollback y monitoreo de rollback
+
+E12 — Observabilidad, soporte y operación
+F046 Logging estructurado y correlación
+
+T163 Implementar trazas request-id por petición
+T164 Estandarizar niveles de log por módulo
+T165 Centralizar logs backend en servicio externo (opcional)
+
+F047 Métricas y monitoreo básico
+
+T166 Exponer endpoint /health y métricas básicas
+T167 Configurar alertas por disponibilidad y errores críticos
+T168 Documentar procedimientos de monitoreo
+
+F048 Backups, recuperación y continuidad
+
+T169 Definir política y periodicidad de backups PostgreSQL
+T170 Probar restauración de backup en staging
+T171 Automatizar backup y notificaciones de éxito/fallo
+
+E13 — QA, datos de prueba y salida a producción
+F049 Estrategia de testing por capas
+
+T172 Pruebas unitarias por dominio crítico
+T173 Pruebas integración API+DB
+T174 Pruebas E2E de flujo cotización-viaje
+T175 Scripts automatizados para regresión
+
+F050 UAT multiempresa y checklist de release
+
+T176 Ejecutar UAT con escenarios por tipo de cliente
+T177 Crear checklist go-live técnico y operativo
+T178 Cierre post-mortem de pruebas
+
+F051 Plan de adopción, capacitación y handoff
+
+T179 Crear guía de operación para admins de empresa
+T180 Crear guía de superadmin y soporte L1/L2
+T181 Definir plan de capacitación inicial post-lanzamiento
+
+Resumen
+Épicas: 13
+Features: 51
+Tasks: 112
+Total Features+Tasks: 163
+
+Dependencias clave
+E01 → E02/E10
+E02/E03 → E04/E05
+E04/E05 → E09/E10
+E07/E08 → lanzamiento comercial multiempresa
+E11/E12/E13 → salida controlada a producción
+</textarea>
