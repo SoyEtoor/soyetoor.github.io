@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090e1b">
+  <meta name="description" content="Miguel — desarrollador de software especializado en aplicaciones de escritorio, sistemas web y automatizaciones. Proyectos y descarga del Gestor Documental.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SoyEtoor · Miguel — Desarrollo de software">
+  <meta property="og:description" content="Software hecho para resolver problemas reales. Conoce los proyectos de Miguel y descarga Gestor Documental.">
+  <meta property="og:image" content="assets/og-cover.svg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <style>
+:root{color-scheme:dark;--bg:#080d18;--bg-alt:#0c1322;--surface:#10182a;--surface2:#151e30;--line:rgba(165,187,219,.14);--line-strong:rgba(174,197,237,.23);--txt:#f6f8ff;--soft:#bdc9dd;--muted:#7f8da5;--accent:#9f8bff;--cyan:#79e1e1;--focus:#bbaaff;--max:1200px;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--txt);margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{font:inherit}a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:4px}svg{display:block}h1,h2,h3,h4,p{margin-top:0}.container{max-width:var(--max);padding-inline:32px;margin-inline:auto}.section-space{padding-block:100px}.site-bg{pointer-events:none;position:absolute;inset:0 0 auto;height:1000px;background:radial-gradient(ellipse 43% 34% at 72% 14%,rgba(64,48,145,.21),transparent 85%),radial-gradient(ellipse 34% 32% at 25% 24%,rgba(14,107,130,.08),transparent 85%);z-index:-1}.skip-link{position:absolute;z-index:1000;left:16px;top:-80px;padding:12px;background:white;color:#111}.skip-link:focus{top:14px}
+.site-header{border-bottom:1px solid rgba(255,255,255,.06);position:relative;z-index:20;background:rgba(8,13,24,.75);backdrop-filter:blur(18px)}.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:85px}.brand{font-size:21px;font-weight:780;letter-spacing:-.8px;display:inline-flex;align-items:center;gap:13px;white-space:nowrap}.brand-mark{background:linear-gradient(140deg,#aaa4ff,#6b7bf8);color:#090f1c;border-radius:12px;width:41px;height:41px;display:inline-flex;align-items:center;justify-content:center;font-size:18px;letter-spacing:-4px;padding-right:3px;font-weight:900}.brand-slash{color:#3b438e}.brand-dot{color:#a798ff}.nav{display:flex;align-items:center;gap:39px}.nav a{font-size:13px;font-weight:630;color:#aab6c9;transition:color .2s}.nav a:hover{color:white}.nav .nav-cta{color:var(--txt);border:1px solid var(--line-strong);border-radius:10px;padding:12px 18px}.nav-cta span{padding-left:12px;color:var(--cyan)}.menu-toggle{display:none;background:transparent;border:1px solid var(--line);border-radius:9px;padding:10px;color:#fff}.menu-toggle svg{width:22px;stroke:currentColor;stroke-width:2;fill:none}
+.hero{padding-top:105px;padding-bottom:0}.hero-grid{display:grid;grid-template-columns:.93fr 1.07fr;align-items:center;gap:42px;min-height:550px}.eyebrow,.section-kicker{font-size:11px;font-weight:800;letter-spacing:2.1px;color:var(--cyan);display:flex;align-items:center;gap:13px}.eyebrow-line{display:block;background:#6ce1dd;width:25px;height:1px}.hero h1{font-size:clamp(51px,5.35vw,82px);line-height:1.08;letter-spacing:-4.2px;font-weight:780;margin:30px 0 25px;white-space:nowrap}.gradient-text{background:linear-gradient(100deg,#9f9dff 0%,#9a9dff 38%,#72e5e4 105%);color:transparent;background-clip:text}.hero-intro{font-size:17px;line-height:1.82;color:var(--soft);max-width:490px;margin-bottom:33px}.hero-actions{display:flex;align-items:center;gap:11px;flex-wrap:wrap}.button{min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:17px;padding:12px 18px;border-radius:10px;font-size:13px;font-weight:750;transition:transform .2s,background .2s,box-shadow .2s}.button svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.button:hover:not(.is-disabled){transform:translateY(-2px)}.button-primary{background:#a79bff;color:#101125;box-shadow:0 12px 30px rgba(126,113,255,.12)}.button-primary:hover{background:#bfb6ff}.button-ghost{border:1px solid var(--line-strong);color:#e2e9f5;background:rgba(255,255,255,.02)}.button-ghost:hover{background:rgba(255,255,255,.06)}.hero-footnote{display:flex;gap:9px;align-items:center;margin-top:35px;color:#72829d;font-size:12px}.small-stars{font-size:17px;color:var(--cyan)}
+.hero-art{position:relative;isolation:isolate;min-width:0;padding:62px 0 58px 19px}.orb{border-radius:50%;position:absolute;z-index:-1;filter:blur(55px);opacity:.5}.orb-a{width:330px;height:330px;background:rgba(100,86,241,.30);top:80px;right:20px}.orb-b{width:220px;height:220px;background:rgba(50,205,207,.14);bottom:36px;left:80px}.mock-window{border:1px solid rgba(192,201,255,.2);border-radius:17px;overflow:hidden;box-shadow:0 35px 120px rgba(0,0,0,.44),0 0 0 9px rgba(186,176,255,.025);transform:perspective(1200px) rotateY(-5deg) rotateX(3deg);background:#0c1425;max-width:555px}.mock-topbar{height:45px;background:#131e32;border-bottom:1px solid #2b3650;display:flex;align-items:center;justify-content:space-between;padding:0 16px;color:#73859f;font:11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.15px}.window-dots{display:flex;gap:6px}.window-dots i{width:8px;height:8px;border-radius:50%;background:#fa7687}.window-dots i:nth-child(2){background:#ffc873}.window-dots i:nth-child(3){background:#6bdcba}.mock-top-icon{font-size:18px}.mock-body{display:flex;min-height:352px}.mock-sidebar{width:59px;background:#10192b;display:flex;flex-direction:column;align-items:center;gap:20px;padding:16px 6px;border-right:1px solid #29344b}.mock-logo{font-size:19px;font-weight:900;color:#c9c1ff;letter-spacing:-3px;margin-bottom:13px}.mock-logo span{font-size:11px;vertical-align:top;color:#75e0e0}.mock-side{display:flex;align-items:center;justify-content:center;width:32px;height:32px;color:#60718d;border-radius:8px;font-size:18px}.mock-side.selected{background:#282b54;color:#a4a8ff}.mock-side.bottom{margin-top:auto}.mock-workspace{padding:25px 25px 30px;width:100%;min-width:0}.mock-meta{font-size:9px;color:#8e9ebd;letter-spacing:1.6px;font-weight:800}.mock-id{color:#5a6b85;margin-left:7px}.mock-title{font-size:22px;letter-spacing:-.7px;font-weight:730;margin-top:10px}.mock-title span{font-size:15px;color:#a59bff;margin-left:6px}.mock-subtitle{color:#7385a2;font-size:11px;margin-top:6px}.mock-stats{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:23px}.mock-stat{border:1px solid #2a4050;border-radius:10px;padding:14px 15px;background:linear-gradient(140deg,#163343,#111c32)}.mock-stat>div{font-size:8px;font-weight:800;letter-spacing:1.3px;color:#80a9ba}.mock-stat strong{font-size:26px;letter-spacing:-1px;display:block;margin-top:8px}.mock-stat small{display:flex;gap:6px;align-items:center;color:#8ea5b8;font-size:9px;margin-top:3px}.status-light{width:6px;height:6px;background:#79dfba;display:inline-block;border-radius:50%}.mock-stat.stat-purple{background:linear-gradient(130deg,#282549,#171e37);border-color:#39345e}.mock-stat.stat-purple>div{color:#b2a4ff}.mock-stat em{font:12px sans-serif;color:#a4a0c3;letter-spacing:normal}.mock-list-title{display:flex;justify-content:space-between;color:#8e9db9;letter-spacing:1.2px;font-size:9px;font-weight:790;margin-top:27px;margin-bottom:11px}.mock-list-title span{font-size:16px;line-height:3px}.mock-file{display:flex;align-items:center;gap:11px;background:#141f33;border:1px solid #26334b;border-radius:8px;padding:10px;margin-bottom:7px}.file-icon{display:flex;align-items:center;justify-content:center;width:32px;height:31px;flex:0 0 auto;border-radius:6px;font-size:9px;font-weight:830}.pdf{background:#453243;color:#f39caa}.cad{background:#2c4250;color:#8ad1eb}.rep{background:#323454;color:#c0b2ff}.mock-file-info{min-width:0;flex:1}.mock-file-info b{display:block;font-size:10px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mock-file-info small{display:block;font-size:9px;color:#7488a3;margin-top:4px}.file-state{color:#7bdebf;font-size:14px}.floating-chip{position:absolute;z-index:3;background:rgba(33,43,68,.96);border:1px solid #4b5475;border-radius:10px;box-shadow:0 15px 36px #05081499;color:#dce5f7;font-size:11px;font-weight:700;padding:11px 14px;display:flex;gap:10px;align-items:center}.float-chip-top{right:-14px;top:27px;transform:rotate(3deg)}.chip-icon{color:#c1b2ff;font-size:15px}.chip-check{color:#7ff1c8}.float-chip-bottom{bottom:41px;left:-5px;transform:rotate(-2deg)}.pulse-dot{width:8px;height:8px;border-radius:50%;background:#78e9cc;box-shadow:0 0 13px #69c8b6}.art-disclaimer{font-size:10px;text-align:right;color:#566982;position:absolute;bottom:12px;right:7px;letter-spacing:.3px}.stack-divider{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:35px;margin-top:84px;min-height:105px}.stack-label{font-size:10px;letter-spacing:1.65px;font-weight:800;color:#6e7d96;white-space:nowrap}.stack-items{display:flex;justify-content:space-between;align-items:center;gap:15px;flex:1;color:#a3b0c7;font-size:16px;font-weight:700;letter-spacing:-.4px}.stack-items .sep{color:#394563;font-size:14px}
+.section-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:60px;margin-bottom:42px}.section-intro h2,.about h2{font-size:clamp(39px,4.3vw,59px);letter-spacing:-2.6px;line-height:1.15;font-weight:740;margin:16px 0 0}.section-intro h2 em,.about h2 em{font-style:normal;color:#a6a0f9}.section-kicker{font-size:10px;color:#bdacff;letter-spacing:1.8px;margin:0}.section-kicker span{color:#75849d}.section-intro>p{font-size:14px;line-height:1.8;color:#8b9ab3;max-width:310px;margin-bottom:5px}.projects{padding-top:118px}.feature-project{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 390px;gap:32px;background:linear-gradient(140deg,#141d32,#10182b 48%,#141b31);border:1px solid #2c3753;border-radius:22px;padding:54px;isolation:isolate}.feature-project-glow{position:absolute;right:-100px;top:-170px;width:470px;height:470px;z-index:-1;background:radial-gradient(circle,rgba(108,97,223,.15),transparent 69%)}.project-overline{font-size:10px;letter-spacing:1.65px;font-weight:800;color:#afa0ff;display:flex;align-items:center;gap:10px}.dot-available{width:7px;height:7px;background:#a493fc;border-radius:50%;box-shadow:0 0 12px #9a83ff}.project-count{color:#55647f;margin-left:12px}.project-icon{display:flex;width:73px;height:73px;background:linear-gradient(140deg,#37365f,#272843);border:1px solid #51517c;border-radius:17px;align-items:center;justify-content:center;margin:48px 0 26px}.project-icon svg{width:38px;height:38px;stroke:#c3b9ff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}.project-main h3{font-size:clamp(37px,4vw,55px);line-height:1.14;letter-spacing:-2px;margin:0 0 24px;font-weight:770}.project-main h3 span{color:#afa4ff}.project-main>p{max-width:450px;font-size:14px;line-height:1.9;color:#a6b3c9;margin-bottom:25px}.feature-tags,.secondary-bottom{display:flex;flex-wrap:wrap;gap:8px}.feature-tags span,.secondary-bottom span{background:#232b44;border:1px solid #303a57;border-radius:7px;padding:7px 10px;font-size:10px;color:#bec7dc;font-weight:700}.feature-bullets{display:grid;gap:13px;margin-top:41px;font-size:12px;color:#b2bdd1}.feature-bullets span{color:#8de2ce;font-size:15px;margin-right:9px}.download-card{background:#19223a;border:1px solid #394262;border-radius:17px;padding:31px;box-shadow:0 24px 70px rgba(0,0,0,.12)}.download-card-top{display:flex;justify-content:space-between;align-items:flex-start}.download-symbol{background:#35335e;border:1px solid #5c568b;border-radius:13px;width:62px;height:62px;display:grid;place-items:center}.download-symbol svg{width:38px;height:38px;fill:none;stroke:#bdb1ff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.platform-label{font-size:10px;letter-spacing:1.2px;font-weight:800;color:#98a9c8;display:flex;align-items:center;gap:7px}.windows-icon{font-size:17px}.download-card h4{font-size:28px;line-height:1.25;letter-spacing:-1px;margin:23px 0 13px}.download-card>p{color:#a4b1c7;font-size:12px;line-height:1.8;margin-bottom:27px}.installer-details{border-block:1px solid #3b445e;padding:18px 0;display:grid;gap:12px;margin-bottom:23px}.installer-details>div{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:11px}.installer-details span{color:#8798b4}.installer-details strong{color:#d8e2f5;font-size:11px;text-align:right}.button-download{display:flex;width:100%;justify-content:space-between;color:#11142b;background:#aaa0ff;padding-inline:17px}.button-download:hover{background:#c2baff}.button-download.is-disabled{background:#36415b;color:#a6b5ce;cursor:not-allowed;border:1px solid #48516b}.download-note{display:flex;gap:9px;align-items:flex-start;margin-top:16px;color:#7f90aa;line-height:1.6;font-size:10px}.download-note svg{stroke:#8798b4;stroke-width:1.5;fill:none;width:15px;height:15px;flex:0 0 15px}.secondary-grid{display:grid;grid-template-columns:1fr 1fr;gap:19px;margin-top:19px}.secondary-card{background:#101827;border:1px solid #263147;border-radius:19px;padding:33px;min-height:318px;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}.secondary-card:hover{border-color:#536080;transform:translateY(-3px)}.secondary-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:1.5px;font-weight:780;color:#71819d}.square-arrow{font-size:19px;color:#a2b0cb}.secondary-mark{font-size:35px;font-weight:850;letter-spacing:-4px;color:#b8b0ff;margin:23px 0 17px}.secondary-mark span{font-size:15px;letter-spacing:0;vertical-align:top;color:#6fe1d2}.automark{font-size:28px;letter-spacing:1px;color:#81d9d6}.secondary-card h3{font-size:24px;letter-spacing:-.75px;margin:0 0 11px}.secondary-card h3 span{color:#a19cdb}.secondary-card>p{font-size:13px;line-height:1.7;color:#8e9eb8;max-width:440px;margin-bottom:24px}.secondary-bottom{margin-top:auto}.secondary-bottom span{background:#161f31;border-color:#2b3750;font-size:9px}.secondary-bottom .private-label{background:transparent;border-color:transparent;color:#7787a1;margin-left:auto}
+.workflow{background:linear-gradient(180deg,#0b1220,#0a111e);border-block:1px solid #1e293d}.workflow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.workflow-step{position:relative;border-top:1px solid #36405a;padding:25px 22px 10px 0}.step-number{font-size:11px;letter-spacing:1px;color:#8796ad;font-weight:700}.step-icon{font-size:32px;color:#a6a4ff;margin:28px 0 20px;font-weight:300}.workflow-step h3{font-size:22px;letter-spacing:-.5px;margin:0 0 10px}.workflow-step p{font-size:13px;line-height:1.8;color:#899ab4;max-width:250px}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:110px;align-items:start}.about h2{max-width:480px}.about-body{padding-top:26px}.about-body p{font-size:16px;line-height:1.9;color:#a3b1c9}.about-body p strong{color:white}.text-link{display:inline-flex;align-items:center;gap:13px;color:#b6acff;font-weight:750;font-size:13px;margin-top:12px;padding-bottom:10px;border-bottom:1px solid #716ca3}.text-link:hover{color:#d0caff}
+.contact-section{padding:0 0 85px}.contact-card{position:relative;isolation:isolate;text-align:center;background:linear-gradient(135deg,#25235c 2%,#23285b 50%,#163f53 120%);border:1px solid #5d5d92;border-radius:23px;overflow:hidden;padding:75px 24px}.contact-glow{position:absolute;z-index:-1;width:600px;height:600px;left:50%;top:0;transform:translateX(-50%);background:radial-gradient(circle,rgba(138,143,255,.19),transparent 65%)}.contact-card .section-kicker{justify-content:center;color:#b7ecf0}.contact-card h2{font-size:clamp(49px,6vw,78px);letter-spacing:-3px;line-height:1.05;margin:21px 0 22px}.contact-card h2 em{font-style:normal;color:#9cebe7}.contact-card>p:not(.section-kicker){color:#c3d2e5;font-size:14px;line-height:1.8;max-width:430px;margin:0 auto 25px}.button-light{color:#15213d;background:#e3e8fb}.button-light:hover{background:white}.footer{border-top:1px solid #1b2538}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:100px;color:#7b8ba4;font-size:11px}.footer .brand{color:#e9effb;font-size:18px}.small-mark{font-size:12px;letter-spacing:-2px;width:29px;height:29px;border-radius:8px;padding-right:1px}.toast{position:fixed;bottom:22px;right:22px;background:#22314a;border:1px solid #546484;color:#eff3ff;padding:15px 20px;border-radius:10px;box-shadow:0 12px 40px #0008;z-index:100;font-size:13px;max-width:min(390px,calc(100% - 44px))}
+@media (max-width:1080px){.container{padding-inline:26px}.hero-grid{gap:0;grid-template-columns:1fr 1fr}.hero h1{font-size:clamp(47px,5.9vw,70px);letter-spacing:-3.6px}.hero-art{padding-left:0}.feature-project{grid-template-columns:1fr 355px;padding:36px}.floating-chip{font-size:9px}.float-chip-top{right:0}.stack-divider{gap:20px}.stack-items{font-size:14px}}
+@media (max-width:800px){.nav{gap:23px}.hero{padding-top:65px}.hero-grid{grid-template-columns:1fr;gap:20px}.hero h1{font-size:clamp(56px,9vw,76px)}.hero-intro{max-width:590px}.hero-art{max-width:570px;width:100%;margin:0 auto}.mock-window{transform:none}.float-chip-top{right:-8px}.stack-divider{margin-top:20px;display:block;padding-block:24px;min-height:auto}.stack-label{margin-bottom:18px}.stack-items{justify-content:flex-start;flex-wrap:wrap}.section-space{padding-block:75px}.section-intro{align-items:flex-start;gap:24px}.feature-project{grid-template-columns:1fr;padding:40px}.project-icon{margin-top:30px}.project-main>p{max-width:600px}.download-card{max-width:500px;width:100%}.about-grid{gap:40px}.section-intro h2,.about h2{font-size:46px}}
+@media (max-width:580px){.container{padding-inline:20px}.header-inner{min-height:73px}.brand{font-size:19px}.brand-mark{width:37px;height:37px}.menu-toggle{display:block}.nav{display:none;position:absolute;top:70px;left:14px;right:14px;background:#172136;border:1px solid #3a4862;border-radius:13px;padding:12px;flex-direction:column;align-items:stretch;gap:0;box-shadow:0 22px 50px #0008}.nav.is-open{display:flex}.nav a{padding:14px 12px}.nav .nav-cta{margin-top:5px;text-align:center}.hero{padding-top:51px}.eyebrow{font-size:9px;letter-spacing:1.25px}.hero h1{font-size:clamp(45px,11.6vw,65px);letter-spacing:-2.7px;margin:24px 0 19px}.hero-intro{font-size:15px;line-height:1.75}.hero-actions{gap:8px}.button{font-size:12px;gap:9px;padding:12px 13px}.hero-footnote{margin-top:26px;line-height:1.5}.hero-art{padding:43px 0 36px}.mock-body{min-height:auto}.mock-workspace{padding:20px 14px 16px}.mock-sidebar{width:43px;gap:15px}.mock-title{font-size:17px}.mock-stat{padding:10px}.mock-stat strong{font-size:22px}.mock-stat>div{font-size:7px}.mock-file-info b{font-size:9px}.mock-file-info small{font-size:8px}.mock-file{padding:7px}.float-chip-top{top:6px;right:0}.float-chip-bottom{bottom:22px;left:0}.art-disclaimer{bottom:0}.stack-divider{margin-top:28px}.stack-items{font-size:13px;gap:8px}.stack-label{font-size:9px}.section-intro{display:block;margin-bottom:28px}.section-intro h2,.about h2{font-size:clamp(34px,9vw,47px);letter-spacing:-1.9px}.section-intro>p{margin-top:18px}.feature-project{padding:24px;border-radius:16px;gap:29px}.project-icon{width:57px;height:57px;margin:28px 0 18px}.project-icon svg{width:30px}.project-main h3{font-size:clamp(32px,8vw,43px);letter-spacing:-1.4px}.project-main>p{font-size:13px}.feature-bullets{font-size:11px;margin-top:27px}.download-card{padding:24px 20px}.secondary-grid,.workflow-grid,.about-grid{grid-template-columns:1fr}.secondary-grid{gap:14px;margin-top:14px}.secondary-card{min-height:290px}.workflow-grid{gap:10px}.workflow-step{padding-bottom:25px}.about-grid{gap:12px}.about-body{padding:0}.about-body p{font-size:14px}.contact-card{padding:61px 15px}.contact-card h2{font-size:57px}.footer-inner{padding-block:25px;flex-wrap:wrap}.footer-inner>span:nth-child(2){order:3;width:100%}.footer-inner>span:last-child{font-size:10px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Tarjeta del plugin AutoCAD; mantiene la paleta y los componentes originales. */
+.plugin-card{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(270px,.98fr);gap:38px;align-items:center;min-height:295px;overflow:hidden}
+.plugin-card .secondary-mark{margin:18px 0 14px}
+.plugin-card h3{font-size:clamp(22px,2.6vw,31px);line-height:1.3}
+.plugin-card h3 span{font-weight:550}
+.plugin-card>div>p{font-size:13px;line-height:1.75;color:#8e9eb8;max-width:540px;margin:0 0 24px}
+.plugin-card .private-label{margin-left:0}
+.plugin-mark{color:#85d8d6;letter-spacing:0}.plugin-mark span{color:#afa4ff}
+.plugin-illustration{border:1px solid #2f4459;border-radius:14px;background:linear-gradient(135deg,#131f32,#132131);padding:15px 17px 10px;max-width:490px;width:100%;justify-self:end}
+.plugin-art-top,.plugin-art-bottom{font-size:9px;letter-spacing:1.1px;font-weight:700;color:#8fa6c0;display:flex;align-items:center;gap:7px}
+.plugin-art-top>span:last-child{margin-left:auto;color:#7ed3ce}.plugin-art-bullet{background:#80d4be;width:6px;height:6px;border-radius:50%}
+.plugin-illustration svg{display:block;width:100%;height:auto;max-height:190px;margin:10px 0 3px}
+.plugin-art-bottom{justify-content:flex-start;gap:22px}.plugin-art-bottom span{display:flex;gap:7px;align-items:center}
+.plugin-art-bottom i{width:7px;height:7px;border-radius:50%;display:inline-block}.plugin-ok{background:#75cdb7}.plugin-alert{background:#f3aa86}
+.plugin-concept-label{text-align:right;margin-top:10px;color:#73839c;font-size:9px;letter-spacing:0}
+.contact-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.button-contact-ghost{border:1px solid #9eacdd;color:#eff4ff;background:rgba(255,255,255,.07)}.button-contact-ghost:hover{background:rgba(255,255,255,.13)}
+.contact-email{display:inline-block;color:#d5e2fa;font-size:12px;margin-top:19px;opacity:.88;word-break:break-word}.contact-email:hover{text-decoration:underline}
+@media (max-width:800px){.plugin-card{grid-template-columns:1fr}.plugin-illustration{justify-self:start;max-width:540px}}
+@media (max-width:580px){.plugin-card{gap:22px}.plugin-illustration{padding:10px}.plugin-illustration svg{max-height:160px}.contact-actions .button{max-width:100%}}
+
+</style>
+  <title>SoyEtoor · Miguel — Desarrollo de software</title>
+  
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="site-bg" aria-hidden="true"></div>
+  <header class="site-header" id="inicio">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="SoyEtoor, ir al inicio">
+        <span class="brand-mark" aria-hidden="true"><span>&lt;</span><span class="brand-slash">/</span><span>&gt;</span></span>
+        <span>SoyEtoor<span class="brand-dot">.</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Navegación principal">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#habilidades">Tecnologías</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a class="nav-cta" href="#contacto">Hablemos <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero section-space" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> DESARROLLO · DISEÑO · AUTOMATIZACIÓN</div>
+          <h1 id="hero-title">Ideas complejas.<br><span class="gradient-text">Software simple.</span></h1>
+          <p class="hero-intro">Desarrollo aplicaciones, sistemas web y herramientas que convierten procesos complicados en experiencias claras, eficientes y útiles.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#proyectos">Explorar proyectos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
+            <a class="button button-ghost" href="https://github.com/HectorMTorres" target="_blank" rel="noopener noreferrer">Mi GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+          <div class="hero-footnote"><span class="small-stars" aria-hidden="true">✳</span> Software pensado para el mundo real, no solo para la pantalla.</div>
+        </div>
+        <div class="hero-art" aria-label="Ilustración conceptual de un gestor documental de escritorio">
+          <div class="orb orb-a"></div><div class="orb orb-b"></div>
+          <div class="floating-chip float-chip-top"><span class="chip-icon">⌘</span> Arquitectura clara <span class="chip-check">✓</span></div>
+          <div class="mock-window">
+            <div class="mock-topbar"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span>gestor_documental / escritorio</span><span class="mock-top-icon">↗</span></div>
+            <div class="mock-body">
+              <aside class="mock-sidebar" aria-hidden="true">
+                <span class="mock-logo">C<span>✳</span></span><span class="mock-side selected">▦</span><span class="mock-side">▤</span><span class="mock-side">⌕</span><span class="mock-side bottom">⚙</span>
+              </aside>
+              <div class="mock-workspace">
+                <div class="mock-meta">MI ESPACIO <span class="mock-id">/ 01</span></div>
+                <div class="mock-title">Gestión documental <span>↗</span></div>
+                <div class="mock-subtitle">Archivos clasificados, siempre a la mano.</div>
+                <div class="mock-stats"><div class="mock-stat"><div>DOCUMENTOS</div><strong>0248</strong><small><span class="status-light"></span> Biblioteca local</small></div><div class="mock-stat stat-purple"><div>ORGANIZACIÓN</div><strong>08 <em>zonas</em></strong><small>Por ubicación y tipo</small></div></div>
+                <div class="mock-list-title">ARCHIVOS RECIENTES <span>···</span></div>
+                <div class="mock-file"><span class="file-icon pdf">PDF</span><span class="mock-file-info"><b>DICTAMEN_CORDOBA.pdf</b><small>Dictámenes · Octubre</small></span><span class="file-state">✓</span></div>
+                <div class="mock-file"><span class="file-icon cad">DWG</span><span class="mock-file-info"><b>PLANO_045.dwg</b><small>Palacio · Archivo técnico</small></span><span class="file-state">✓</span></div>
+                <div class="mock-file"><span class="file-icon rep">DOC</span><span class="mock-file-info"><b>REPORTE_MENSUAL.docx</b><small>Reportes · Zona 06</small></span><span class="file-state">✓</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-chip float-chip-bottom"><span class="pulse-dot"></span> Hecho para trabajar sin complicaciones</div>
+          <p class="art-disclaimer">Vista conceptual · No es una captura de la aplicación</p>
+        </div>
+      </div>
+      <div class="container stack-divider"><div class="stack-label">TECNOLOGÍA CON INTENCIÓN</div><div class="stack-items"><span>Python</span><span class="sep">✳</span><span>React</span><span class="sep">✳</span><span>TypeScript</span><span class="sep">✳</span><span>SQL</span><span class="sep">✳</span><span>PySide6</span></div></div>
+    </section>
+
+    <section class="projects section-space" id="proyectos" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-intro"><div><p class="section-kicker"><span>01 /</span> TRABAJO SELECCIONADO</p><h2 id="projects-title">Proyectos que <em>resuelven.</em></h2></div><p>Aplicaciones construidas alrededor de necesidades concretas, con atención al detalle y a la experiencia de uso.</p></div>
+        <article class="feature-project" aria-labelledby="catastro-title">
+          <div class="feature-project-glow" aria-hidden="true"></div>
+          <div class="project-main">
+            <div class="project-overline"><span class="dot-available"></span> PROYECTO DESTACADO <span class="project-count">/ 001</span></div>
+            <div class="project-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="7" y="6" width="34" height="36" rx="6"/><path d="M15 16h18M15 24h18M15 32h10M34 34l3 3 6-8"/></svg></div>
+            <h3 id="catastro-title">Gestor <span>Documental.</span></h3>
+            <p>Una aplicación de escritorio para registrar, clasificar, visualizar y encontrar documentación catastral sin depender de una conexión a internet.</p>
+            <div class="feature-tags"><span>Aplicación de escritorio</span><span>Python</span><span>PySide6</span><span>SQLite</span></div>
+            <div class="feature-bullets"><div><span aria-hidden="true">✓</span> Clasificación y nomenclatura de documentos</div><div><span aria-hidden="true">✓</span> Vista previa de archivos PDF</div><div><span aria-hidden="true">✓</span> Búsqueda y consulta local</div></div>
+          </div>
+          <div class="download-card" id="descargar">
+            <div class="download-card-top"><span class="download-symbol" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="5" y="5" width="30" height="30" rx="7"/><path d="M20 11v13m-5-5 5 5 5-5M12 29h16"/></svg></span><span class="platform-label"><span class="windows-icon" aria-hidden="true">⊞</span> WINDOWS</span></div>
+            <h4>Tu documentación,<br>en orden.</h4>
+            <p>Instala el gestor en tu equipo y empieza a organizar tus archivos desde un solo lugar.</p>
+            <div class="installer-details"><div><span>Plataforma</span><strong>Windows · Escritorio</strong></div><div><span>Versión</span><strong id="installer-version">MVP 0.1.1</strong></div><div><span>Disponibilidad</span><strong id="installer-status" aria-live="polite">Comprobando…</strong></div></div>
+            <a class="button button-download is-disabled" id="download-button" href="#descargar" aria-disabled="true"><span id="download-label">Preparando descarga…</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 18v3h14v-3"/></svg></a>
+            <div class="download-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 4v6c0 5-4 8-9 10-5-2-9-5-9-10V7l9-4Zm-4 9 3 3 5-5"/></svg> Versión MVP · Instalador para Windows (.exe).</div>
+          </div>
+        </article>
+        <div class="secondary-grid">
+          <article class="secondary-card"><div class="secondary-top"><span>02 — SISTEMA WEB</span><span class="square-arrow">↗</span></div><div class="secondary-mark pos-mark" aria-hidden="true">W<span>✳</span></div><h3>El Wero del Sazón <span>POS</span></h3><p>Sistema de punto de venta con flujos para meseros, caja, cocina, supervisión y gestión de sucursales.</p><div class="secondary-bottom"><span>React</span><span>TypeScript</span><span>Vite</span><span class="private-label">Proyecto académico</span></div></article>
+          <article class="secondary-card about-card"><div class="secondary-top"><span>03 — ENFOQUE</span><span class="square-arrow">↗</span></div><div class="secondary-mark automark" aria-hidden="true">{ }</div><h3>Automatización <span>&amp; herramientas</span></h3><p>Diseño de soluciones para reducir tareas repetitivas, organizar información y simplificar procesos.</p><div class="secondary-bottom"><span>Python</span><span>Bases de datos</span><span>Integraciones</span></div></article>
+          <article class="secondary-card plugin-card" aria-labelledby="plugin-title">
+            <div class="plugin-copy">
+              <div class="secondary-top"><span>04 — PLUGIN · AUTOCAD</span><span class="square-arrow" aria-hidden="true">↗</span></div>
+              <div class="secondary-mark plugin-mark" aria-hidden="true">⌗<span>✳</span></div>
+              <h3 id="plugin-title">GeometryValidator <span>· Validación geométrica</span></h3>
+              <p>Plugin para AutoCAD orientado a comprobar geometrías de manzanas, terrenos y construcciones; ayuda a identificar solapes, huecos y elementos fuera de los límites esperados.</p>
+              <div class="secondary-bottom"><span>C#</span><span>.NET</span><span>AutoCAD API</span><span class="private-label">En desarrollo</span></div>
+            </div>
+            <div class="plugin-illustration" aria-hidden="true">
+              <div class="plugin-art-top"><span class="plugin-art-bullet"></span> PLANO / VALIDACIÓN <span>⌗</span></div>
+              <svg viewBox="0 0 380 190" role="img" aria-label="Esquema conceptual de lotes catastrales">
+                <defs><pattern id="cad-grid" width="19" height="19" patternUnits="userSpaceOnUse"><path d="M 19 0 L 0 0 0 19" fill="none" stroke="#2c4058" stroke-width=".65" /></pattern></defs>
+                <rect width="380" height="190" fill="url(#cad-grid)"/>
+                <path d="M64 29 L316 29 L337 160 L47 160 Z" fill="#69c9b5" fill-opacity=".05" stroke="#76dbcb" stroke-width="2"/>
+                <path d="M64 29 L118 159 M147 29 L147 159 M231 29 L231 159 M316 29 L265 160" fill="none" stroke="#71a6cf" stroke-width="1.5"/>
+                <path d="M155 49 L213 49 L213 114 L155 114 Z" fill="#9d94f5" fill-opacity=".08" stroke="#a9a2ff" stroke-width="1.8"/>
+                <path d="M203 93 L249 93 L249 141 L203 141 Z" fill="#ffab85" fill-opacity=".10" stroke="#fba782" stroke-width="1.8" stroke-dasharray="5 4"/>
+                <circle cx="215" cy="104" r="10" fill="#3e2d39" stroke="#fba782" stroke-width="1.5"/><path d="M215 99 v6 m0 4 v.3" stroke="#ffbc98" stroke-width="2" stroke-linecap="round"/>
+                <path d="M245 113 H290" stroke="#eea482" stroke-width="1.2"/><rect x="286" y="100" width="70" height="23" rx="5" fill="#392d40" stroke="#6c536b"/><text x="321" y="115.5" text-anchor="middle" fill="#f9bea7" font-size="10" font-family="sans-serif">Solape</text>
+              </svg>
+              <div class="plugin-art-bottom"><span><i class="plugin-ok"></i> Límites</span><span><i class="plugin-alert"></i> Incidencias</span></div>
+              <div class="plugin-concept-label">Vista conceptual · No es una captura del plugin</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow section-space" id="habilidades" aria-labelledby="workflow-title"><div class="container"><div class="section-intro"><div><p class="section-kicker"><span>02 /</span> CÓMO TRABAJO</p><h2 id="workflow-title">Del problema <em>a la solución.</em></h2></div><p>Una buena herramienta no solo funciona: también tiene sentido para quien la utiliza cada día.</p></div><div class="workflow-grid"><div class="workflow-step"><span class="step-number">01</span><div class="step-icon">⌁</div><h3>Entender</h3><p>Analizo el proceso y las necesidades antes de diseñar la solución.</p></div><div class="workflow-step"><span class="step-number">02</span><div class="step-icon">▤</div><h3>Construir</h3><p>Desarrollo interfaces claras, lógica confiable y estructuras mantenibles.</p></div><div class="workflow-step"><span class="step-number">03</span><div class="step-icon">↗</div><h3>Mejorar</h3><p>Pruebo, ajusto y evoluciono el producto a partir del uso real.</p></div></div></div></section>
+
+    <section class="about section-space" id="sobre-mi" aria-labelledby="about-title"><div class="container about-grid"><div><p class="section-kicker"><span>03 /</span> SOBRE MÍ</p><h2 id="about-title">Me gusta crear cosas que <em>sirven.</em></h2></div><div class="about-body"><p>Soy <strong>Miguel</strong>, desarrollador de software enfocado en aplicaciones de escritorio, sistemas web y automatización de procesos.</p><p>Me interesa conectar la ingeniería con problemas cotidianos: menos pasos innecesarios, mejor organización y tecnología que de verdad ayude a trabajar.</p><a class="text-link" href="https://github.com/HectorMTorres" target="_blank" rel="noopener noreferrer">Conoce mi trabajo en GitHub <span aria-hidden="true">↗</span></a></div></div></section>
+
+    <section class="contact-section" id="contacto" aria-labelledby="contact-title"><div class="container"><div class="contact-card"><div class="contact-glow"></div><p class="section-kicker">¿TIENES UNA IDEA?</p><h2 id="contact-title">Hagamos que<br><em>funcione.</em></h2><p>Si tienes un proceso que necesita una solución mejor, podemos empezar por hablar de él.</p><div class="contact-actions"><a class="button button-light" href="mailto:hectorm.torres.dev@gmail.com?subject=Contacto%20desde%20tu%20portafolio">Escríbeme por correo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v11H4zM4 7l8 6 8-6"/></svg></a><a class="button button-contact-ghost" href="https://github.com/HectorMTorres" target="_blank" rel="noopener noreferrer">GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div><a class="contact-email" href="mailto:hectorm.torres.dev@gmail.com">hectorm.torres.dev@gmail.com</a></div></div></section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><a class="brand" href="#inicio"><span class="brand-mark small-mark" aria-hidden="true">&lt;/&gt;</span><span>SoyEtoor<span class="brand-dot">.</span></span></a><span>Diseño, código y una buena idea.</span><span>© <span id="year">2026</span> SoyEtoor</span></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+/**
+ * DESCARGA DISPONIBLE — MVP 0.1.1 para Windows.
+ * El paquete entregado incluye este instalador en downloads/.
+ * En HTTP(S) comprobamos con HEAD que el archivo esté publicado.
+ * En file:// permitimos el enlace local: los navegadores no permiten HEAD a archivos locales.
+ * installerExternalUrl permite alojar versiones futuras en una URL HTTPS pública directa.
+ */
+const SITE_CONFIG = {
+  installerLocalPath: './downloads/CatastroGestor-MVP-0.1.1-Windows-Setup.exe',
+  installerExternalUrl: '',
+  installerVersion: 'MVP 0.1.1',
+  installerFileName: 'CatastroGestor-MVP-0.1.1-Windows-Setup.exe',
+};
+
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.getElementById('main-nav');
+menuToggle?.addEventListener('click', () => {
+  const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+  menuToggle.setAttribute('aria-expanded', String(!isOpen));
+  menuToggle.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+  nav.classList.toggle('is-open', !isOpen);
+});
+nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  nav.classList.remove('is-open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Abrir menú');
+}));
+
+document.getElementById('year').textContent = new Date().getFullYear();
+const downloadButton = document.getElementById('download-button');
+const downloadLabel = document.getElementById('download-label');
+const installerStatus = document.getElementById('installer-status');
+const downloadNote = document.querySelector('.download-note');
+if (SITE_CONFIG.installerVersion.trim()) {
+  document.getElementById('installer-version').textContent = SITE_CONFIG.installerVersion.trim();
+}
+function makeDownloadAvailable(url, isExternal) {
+  downloadButton.href = url;
+  downloadButton.classList.remove('is-disabled');
+  downloadButton.removeAttribute('aria-disabled');
+  if (!isExternal) downloadButton.setAttribute('download', SITE_CONFIG.installerFileName);
+  else downloadButton.removeAttribute('download');
+  downloadLabel.textContent = 'Descargar para Windows';
+  installerStatus.textContent = 'Disponible';
+  downloadNote.lastChild.textContent = ' Versión MVP 0.1.1 · Instalador de Windows (43.9 MiB).';
+}
+function makeDownloadUnavailable() {
+  downloadButton.href = '#descargar';
+  downloadButton.classList.add('is-disabled');
+  downloadButton.setAttribute('aria-disabled', 'true');
+  downloadLabel.textContent = 'Descarga no disponible';
+  installerStatus.textContent = 'Pendiente de publicar';
+}
+downloadButton.addEventListener('click', e => {
+  if (downloadButton.classList.contains('is-disabled')) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.textContent = 'No se pudo comprobar el instalador. Verifica que la carpeta downloads esté publicada.';
+    toast.hidden = false;
+    window.clearTimeout(window.__toastTimeout);
+    window.__toastTimeout = window.setTimeout(() => { toast.hidden = true; }, 4500);
+  }
+});
+async function checkInstaller() {
+  const external = SITE_CONFIG.installerExternalUrl.trim();
+  if (external) {
+    if (/^https:\/\//i.test(external)) {
+      makeDownloadAvailable(external, true);
+    } else makeDownloadUnavailable();
+    return;
+  }
+  // Al abrir el paquete descargado como file://, el instalador viene en downloads/.
+  // No es posible comprobarlo con fetch por las restricciones de los navegadores.
+  if (location.protocol === 'file:') { makeDownloadAvailable(SITE_CONFIG.installerLocalPath, false); return; }
+  try {
+    const response = await fetch(SITE_CONFIG.installerLocalPath, { method: 'HEAD', cache: 'no-store' });
+    const contentType = response.headers.get('content-type') || '';
+    // Algunos hosts devuelven index.html con HTTP 200 incluso cuando falta el .exe.
+    if (response.ok && !contentType.includes('text/html')) {
+      makeDownloadAvailable(SITE_CONFIG.installerLocalPath, false);
+    } else makeDownloadUnavailable();
+  } catch (_) { makeDownloadUnavailable(); }
+}
+checkInstaller();
+
+</script>
+</body>
+</html>
